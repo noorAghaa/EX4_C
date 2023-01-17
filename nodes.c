@@ -5,19 +5,22 @@
 
 pnode getNode(pnode head, int key)
 {
+    pnode search = head;
 
-    while (head && head->node_num != key)
+    while (search != NULL)
     {
-        head = head->next;
+        if (search->node_num == key)
+            return search;
+
+        search = search->next;
     }
-    if (!head)
-        return NULL;
-    return head;
+
+    return NULL;
 }
 
 void insert_node_cmd(pnode *head)
 {
-    int key;
+    int key = 0;
     scanf("%d", &key);
 
     pnode newNode = getNode(*head, key);
@@ -36,7 +39,7 @@ void insert_node_cmd(pnode *head)
     }
 
     // insert edges
-    int w, to;
+    int w = 0, to = 0;
     while (scanf("%d", &to) > 0)
     {
         scanf("%d", &w);
@@ -65,7 +68,7 @@ void delete_node_cmd(pnode *head)
     if (*head == NULL)
         return;
 
-    int key;
+    int key = 0;
     scanf("%d", &key);
 
     pnode p = *head;
@@ -121,7 +124,7 @@ char build_graph_cmd(pnode *head)
     if (*head)
         deleteGraph_cmd(head);
 
-    int size;
+    int size = 0;
     scanf("%d", &size);
 
     pnode *h = head;
@@ -137,7 +140,7 @@ char build_graph_cmd(pnode *head)
     }
 
     int flag = 1;
-    char ch;
+    char ch = '\0';
     while (flag && scanf(" %c", &ch) > 0)
     {
         if (ch == 'n')
