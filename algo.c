@@ -191,10 +191,16 @@ int tsp(pnode head, int from, int arr[], int len)
 
 void TSP_cmd(pnode head)
 {
-    int size;
+    int size = 0;
     scanf("%d", &size);
 
     int *arr = (int *)malloc(sizeof(int) * size);
+
+    if (arr == NULL)
+    {
+        printf("Error: malloc failed\n");
+        exit(1);
+    }
 
     for (int i = 0; i < size; i++)
         scanf("%d", &arr[i]);
